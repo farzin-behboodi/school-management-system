@@ -159,3 +159,16 @@ Acts as the central controller managing all data entities and persistence.
 | `edit_classroom` | `classroom` | `None` | Updates an existing classroom record |
 | `load_data` | `None` | `None` | Deserializes and loads school entities from `d3.json` into memory |
 | `save_data` | `None` | `None` | Serializes and writes current school state back to `d3.json` |
+## How To Use
+
+When we run this code, the system opens the school program for (sama) and gets the data from (d3.json) file.
+first you write cmd in the Terminal and for run the code you must write (python school-management-system.py) in the Terminal.
+in this code we have 5 parts in the root menu and you dont need for install venv or any library in cmd.
+you just work with numbers 1 to 5 in Terminal menu, and for back or exit you must write (0) in the Terminal.
+
+for add, edit or delete student, teacher, course and classroom you must select them from the root menu in Terminal.
+in the root menu you must write (1) for students, (2) for teachers, (3) for courses and (4) for classrooms.
+also inside each menu you must write the id of student, teacher or course for select or edit them in the Terminal.
+
+for save the changes you must write (5) in the root menu and the (save_data) method writes all ids and scores in (d3.json) file.
+finally when you open the code again in Terminal, the (load_data) method reads (d3.json) and makes the courses, students, teachers and classrooms.
