@@ -167,7 +167,7 @@ When we run this code, the system opens the school program for (sama) with (sc1 
 first for run the code you must write (python school-management-system.py) in the Terminal.
 at first the code starts in (level="root") and you see this menu in the Terminal:
 
-```text
+```
 1.students
 2.teachers
 3.courses
@@ -178,6 +178,7 @@ choose your option:
 ```
 
 in this menu you must write a number from 0 to 5 in the Terminal:
+
 * **1.students** :for go to (level="students") and manage the students list you must write (1).
 * **2.teachers** :for go to (level="teachers") and manage the teachers list you must write (2).
 * **3.courses** :for go to (level="courses") and manage the school courses you must write (3).
@@ -187,7 +188,7 @@ in this menu you must write a number from 0 to 5 in the Terminal:
 
 when you write (1) in the root menu, the code goes to (level="students") and shows the student menu in the Terminal:
 
-```text
+```
 1.show student
 2.add student
 3.edit student
@@ -197,10 +198,18 @@ when you write (1) in the root menu, the code goes to (level="students") and sho
 choose your option:
 ```
 
-in student menu you must write (1) for (sc1.print_student()) to show all students, write (2) for (sc1.add_student(Student(id,name,family))) to add a student, write (3) for (sc1.edit_student()) to edit info, write (4) for (sc1.remove_student(id)) to delete a student, and write (5) to select a student by id and go to (level="student_select").
-in student select menu you must write (1) for (print_info_selected_student()), write (2) for (add_course_to_select(sc1.courses)) to take a course, write (3) for (delete_course_to_select()) and write (4) for (set_score()) to give score to the student courses.
+in the student menu each number runs one command in the code:
 
-the other menus in the root menu are just like the student menu so we dont print them again.
-for teachers menu you must write (2) in root menu to show, add, edit or delete a teacher, or write (5) to go to (level="teacher_select") and give courses to that teacher with (add_course_to_select(sc1.courses)).
-for courses menu you must write (3) in root menu, and when you write (4) for delete a course with (sc1.remove_course(id)), first the code checks all lists and if they have that course it shows (this course already use) in the Terminal and doesnt delete it.
-finally for classrooms menu you must write (4) in root menu, and when you write (2) for add classroom with (Classroom(id,name)), the code checks (student_course.score < 10) so you only add students with score under 10, and with (5) you go to (level="classroom_select") for change the course, teacher or students.
+* **1.show student** :for run (sc1.print_student()) and see all students in Terminal you must write (1).
+* **2.add student** :for get id, name and family and run (sc1.add_student(Student(id,name,family))) you must write (2).
+* **3.edit student** :for change student info with (sc1.edit_student()) you must write (3).
+* **4.delete student** :for delete a student with (sc1.remove_student(id)) if they are not in any classroom you must write (4).
+* **5.select student** :for select a student by id and go to (level="student_select") you must write (5).
+  * inside (student_select) :write (1) for (print_info_selected_student()), write (2) for (add_course_to_select(sc1.courses)) to take a course, write (3) for (delete_course_to_select()), and write (4) for (set_score()) to give score to student courses.
+* **0.back** :for go back to the root menu you must write (0).
+
+the other menus in the root menu are just like the student menu so we dont print them again:
+
+* **teachers menu (option 2 in root)** :you can show, add, edit or delete a teacher, or write (5) to go to (level="teacher_select") and give courses to that teacher with (add_course_to_select(sc1.courses)).
+* **courses menu (option 3 in root)** :you can add or edit courses, and when you write (4) for delete a course with (sc1.remove_course(id)), first the code checks all lists and if they have that course it shows (this course already use) in the Terminal and doesnt delete it.
+* **classrooms menu (option 4 in root)** :when you write (2) for add classroom with (Classroom(id,name)), the code checks (student_course.score < 10) so you only add students with score under 10, and with (5) you go to (level="classroom_select") for change the course, teacher or students.
