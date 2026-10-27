@@ -159,16 +159,48 @@ Acts as the central controller managing all data entities and persistence.
 | `edit_classroom` | `classroom` | `None` | Updates an existing classroom record |
 | `load_data` | `None` | `None` | Deserializes and loads school entities from `d3.json` into memory |
 | `save_data` | `None` | `None` | Serializes and writes current school state back to `d3.json` |
+
+
 ## How To Use
 
-When we run this code, the system opens the school program for (sama) and gets the data from (d3.json) file.
-first you write cmd in the Terminal and for run the code you must write (python school-management-system.py) in the Terminal.
-in this code we have 5 parts in the root menu and you dont need for install venv or any library in cmd.
-you just work with numbers 1 to 5 in Terminal menu, and for back or exit you must write (0) in the Terminal.
+When we run this code, the system opens the school program for (sama) with (sc1 = School("sama")) and gets the data from (d3.json) file with (sc1.load_data()).
+first for run the code you must write (python school-management-system.py) in the Terminal.
+at first the code starts in (level="root") and you see this menu in the Terminal:
 
-for add, edit or delete student, teacher, course and classroom you must select them from the root menu in Terminal.
-in the root menu you must write (1) for students, (2) for teachers, (3) for courses and (4) for classrooms.
-also inside each menu you must write the id of student, teacher or course for select or edit them in the Terminal.
+```text
+1.students
+2.teachers
+3.courses
+4.classrooms
+5.save
+0.exit
+choose your option:
+```
 
-for save the changes you must write (5) in the root menu and the (save_data) method writes all ids and scores in (d3.json) file.
-finally when you open the code again in Terminal, the (load_data) method reads (d3.json) and makes the courses, students, teachers and classrooms.
+in this menu you must write a number from 0 to 5 in the Terminal:
+* **1.students** :for go to (level="students") and manage the students list you must write (1).
+* **2.teachers** :for go to (level="teachers") and manage the teachers list you must write (2).
+* **3.courses** :for go to (level="courses") and manage the school courses you must write (3).
+* **4.classrooms** :for go to (level="classrooms") and make classes for students with score under 10 you must write (4).
+* **5.save** :for run (sc1.save_data()) and save all lists in (d3.json) file you must write (5).
+* **0.exit** :for stop the (while True) loop and close the program you must write (0).
+
+when you write (1) in the root menu, the code goes to (level="students") and shows the student menu in the Terminal:
+
+```text
+1.show student
+2.add student
+3.edit student
+4.delete student
+5.select student
+0.back
+choose your option:
+```
+
+in student menu you must write (1) for (sc1.print_student()) to show all students, write (2) for (sc1.add_student(Student(id,name,family))) to add a student, write (3) for (sc1.edit_student()) to edit info, write (4) for (sc1.remove_student(id)) to delete a student, and write (5) to select a student by id and go to (level="student_select").
+in student select menu you must write (1) for (print_info_selected_student()), write (2) for (add_course_to_select(sc1.courses)) to take a course, write (3) for (delete_course_to_select()) and write (4) for (set_score()) to give score to the student courses.
+
+the other menus in the root menu are just like the student menu so we dont print them again.
+for teachers menu you must write (2) in root menu to show, add, edit or delete a teacher, or write (5) to go to (level="teacher_select") and give courses to that teacher with (add_course_to_select(sc1.courses)).
+for courses menu you must write (3) in root menu, and when you write (4) for delete a course with (sc1.remove_course(id)), first the code checks all lists and if they have that course it shows (this course already use) in the Terminal and doesnt delete it.
+finally for classrooms menu you must write (4) in root menu, and when you write (2) for add classroom with (Classroom(id,name)), the code checks (student_course.score < 10) so you only add students with score under 10, and with (5) you go to (level="classroom_select") for change the course, teacher or students.
